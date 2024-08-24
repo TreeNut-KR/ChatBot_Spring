@@ -1,5 +1,5 @@
 plugins {
-    kotlin("jvm") version "1.8.0" // Kotlin 버전
+    java
     id("org.springframework.boot") version "3.3.3" // Spring Boot 버전
     id("io.spring.dependency-management") version "1.1.6" // 의존성 관리
 }
