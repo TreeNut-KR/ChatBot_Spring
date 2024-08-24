@@ -16,8 +16,8 @@ class UserController(private val userService: UserService) {
     }
 
     @PostMapping("/login")
-    fun login(@RequestParam id: String, @RequestParam password: String): ResponseEntity<User?> {
-        val user = userService.login(id, password)
+    fun login(@RequestParam id: Long, @RequestParam password: String): ResponseEntity<User?> {
+        val user = userService.login(id, password) // id를 Long 타입으로 전달
         return if (user != null) {
             ResponseEntity.ok(user)
         } else {

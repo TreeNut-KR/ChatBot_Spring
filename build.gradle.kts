@@ -1,44 +1,37 @@
 plugins {
-    java
-    id("org.springframework.boot") version "3.3.3" // Spring Boot 버전
-    id("io.spring.dependency-management") version "1.1.6" // 의존성 관리
+    kotlin("jvm") version "1.8.10" // 최신 안정 버전으로 업데이트
+    kotlin("plugin.spring") version "1.8.10" // 동일하게 업데이트
+    id("org.springframework.boot") version "3.3.3"
+    id("io.spring.dependency-management") version "1.1.6"
 }
+
 
 group = "com.TreeNut"
 version = "0.0.1-SNAPSHOT"
 
 java {
     toolchain {
-        languageVersion = JavaLanguageVersion.of(17) // Java 버전
+        languageVersion = JavaLanguageVersion.of(17)
     }
 }
 
 repositories {
-    mavenCentral() // Maven 중앙 저장소
+    mavenCentral()
 }
 
 dependencies {
-    // Spring Boot Starter
     implementation("org.springframework.boot:spring-boot-starter-web")
     implementation("org.springframework.boot:spring-boot-starter-data-jpa")
     implementation("org.springframework.boot:spring-boot-starter-security")
 
-    // 데이터베이스 드라이버
-    runtimeOnly("mysql:mysql-connector-java:8.0.27")
+    runtimeOnly("mysql:mysql-connector-java:8.0.33") // 버전 추가
 
-    // Spring Security
-    implementation("org.springframework.security:spring-security-config")
-    implementation("org.springframework.security:spring-security-core")
-    implementation("org.springframework.security:spring-security-crypto")
-
-    // Kotlin 관련 의존성
     implementation("org.jetbrains.kotlin:kotlin-reflect")
-    implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
+    implementation("org.jetbrains.kotlin:kotlin-stdlib")
 
-    // 테스트 관련 의존성
     testImplementation("org.springframework.boot:spring-boot-starter-test")
 }
 
 tasks.withType<Test> {
-    useJUnitPlatform() // JUnit 플랫폼 사용
+    useJUnitPlatform()
 }

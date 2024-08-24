@@ -1,13 +1,18 @@
 package com.TreeNut.ChatBot_Backend.model
 
-import javax.persistence.* // 이 줄을 추가하세요
+import jakarta.persistence.Entity
+import jakarta.persistence.Table
+import jakarta.persistence.Id
+import jakarta.persistence.GeneratedValue
+import jakarta.persistence.GenerationType
+import jakarta.persistence.Column
+
 
 @Entity
 @Table(name = "users")
 data class User(
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-    val idx: Long? = null,
-    val id: String,
+    val id: Long? = null, // ID 필드
     val username: String,
     val email: String,
     val password: String,
